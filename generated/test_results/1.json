@@ -1,0 +1,115 @@
+{
+  "traceId": "a1de9af1360ce88f04045b2790b68f45",
+  "testFile": "trace-1.test.ts",
+  "request": {
+    "pathKey": "/api/articles/:slug/comments",
+    "route": "/api/articles/\"Use-the-auxiliary-JSON-card-then-you-can-copy-the-optical-matrix!-13/comments",
+    "method": "GET"
+  },
+  "response": {
+    "expected": {
+      "status": 200,
+      "body": "{}",
+      "header": {
+        "x-powered-by": "Express",
+        "content-type": "application/json; charset=utf-8"
+      }
+    },
+    "observed": {
+      "status": 200,
+      "body": "{}",
+      "header": {
+        "x-powered-by": "Express",
+        "content-type": "application/json; charset=utf-8"
+      }
+    }
+  },
+  "expectedCalls": [
+    {
+      "library": "prisma",
+      "input": {
+        "model": "Article",
+        "operation": "findUnique",
+        "queryOptions": {
+          "where": {
+            "slug": "\"Use-the-auxiliary-JSON-card-then-you-can-copy-the-optical-matrix!-13"
+          },
+          "include": {
+            "comments": {
+              "where": {
+                "OR": [
+                  {
+                    "author": {
+                      "demo": true
+                    }
+                  }
+                ]
+              },
+              "select": {
+                "id": true,
+                "createdAt": true,
+                "updatedAt": true,
+                "body": true,
+                "author": {
+                  "select": {
+                    "username": true,
+                    "bio": true,
+                    "image": true,
+                    "followedBy": true
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "output": null,
+      "id": "33d88f4eddbcd8fd",
+      "timestamp": 1715362949278000,
+      "startup": false
+    }
+  ],
+  "observedCalls": [
+    {
+      "library": "prisma",
+      "input": {
+        "model": "Article",
+        "operation": "findUnique",
+        "queryOptions": {
+          "where": {
+            "slug": "\"Use-the-auxiliary-JSON-card-then-you-can-copy-the-optical-matrix!-13"
+          },
+          "include": {
+            "comments": {
+              "where": {
+                "OR": [
+                  {
+                    "author": {
+                      "demo": true
+                    }
+                  }
+                ]
+              },
+              "select": {
+                "id": true,
+                "createdAt": true,
+                "updatedAt": true,
+                "body": true,
+                "author": {
+                  "select": {
+                    "username": true,
+                    "bio": true,
+                    "image": true,
+                    "followedBy": true
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "id": "33d88f4eddbcd8fd",
+      "startup": false
+    }
+  ]
+}
