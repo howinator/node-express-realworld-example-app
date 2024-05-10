@@ -4,7 +4,7 @@
     "build": {
       "cache": true,
       "dependsOn": ["^build"],
-      "inputs": ["production", "^production"]
+      "inputs": ["production"]
     },
     "lint": {
       "cache": true,

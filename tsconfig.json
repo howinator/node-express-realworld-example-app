@@ -11,7 +11,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": "./api",
     "paths": {},
-    
+
     "allowJs": true,
     "incremental": true,
     "lib": ["es2021", "dom"],
@@ -19,7 +19,7 @@
     "outDir": "./transpiled",
     "target": "es2020",
     "esModuleInterop": true,
-    "strict": true,
+//    "strict": true,
   },
   "files": [],
   "include": [],
