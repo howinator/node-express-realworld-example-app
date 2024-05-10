@@ -1,10 +1,12 @@
+import { setup } from "@detail-dev/trace";
+setup({localDevMode: true});
 import express from 'express';
 import cors from 'cors';
 import * as bodyParser from 'body-parser';
 import routes from './app/routes/routes';
 import HttpException from './app/models/http-exception.model';
 
-const app = express();
+export const app = express();
 
 /**
  * App Configuration

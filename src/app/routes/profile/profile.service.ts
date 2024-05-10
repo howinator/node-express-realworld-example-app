@@ -19,7 +19,7 @@ export const getProfile = async (usernamePayload: string, id?: number) => {
   return profileMapper(profile, id);
 };
 
-export const followUser = async (usernamePayload: string, id: number) => {
+export const followUser = async (usernamePayload: string, id?: number) => {
   const profile = await prisma.user.update({
     where: {
       username: usernamePayload,
@@ -39,7 +39,7 @@ export const followUser = async (usernamePayload: string, id: number) => {
   return profileMapper(profile, id);
 };
 
-export const unfollowUser = async (usernamePayload: string, id: number) => {
+export const unfollowUser = async (usernamePayload: string, id?: number) => {
   const profile = await prisma.user.update({
     where: {
       username: usernamePayload,

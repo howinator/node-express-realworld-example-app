@@ -110,7 +110,7 @@ export const getArticles = async (query: any, id?: number) => {
   };
 };
 
-export const getFeed = async (offset: number, limit: number, id: number) => {
+export const getFeed = async (offset: number, limit: number, id?: number) => {
   const articlesCount = await prisma.article.count({
     where: {
       author: {
@@ -159,7 +159,7 @@ export const getFeed = async (offset: number, limit: number, id: number) => {
   };
 };
 
-export const createArticle = async (article: any, id: number) => {
+export const createArticle = async (article: any, id?: number) => {
   const { title, description, body, tagList } = article;
   const tags = Array.isArray(tagList) ? tagList : [];
 
@@ -286,7 +286,7 @@ const disconnectArticlesTags = async (slug: string) => {
   });
 };
 
-export const updateArticle = async (article: any, slug: string, id: number) => {
+export const updateArticle = async (article: any, slug: string, id?: number) => {
   let newSlug = null;
 
   const existingArticle = await await prisma.article.findFirst({
@@ -382,7 +382,7 @@ export const updateArticle = async (article: any, slug: string, id: number) => {
   return articleMapper(updatedArticle, id);
 };
 
-export const deleteArticle = async (slug: string, id: number) => {
+export const deleteArticle = async (slug: string, id?: number) => {
   const existingArticle = await await prisma.article.findFirst({
     where: {
       slug,
@@ -470,7 +470,7 @@ export const getCommentsByArticle = async (slug: string, id?: number) => {
   return result;
 };
 
-export const addComment = async (body: string, slug: string, id: number) => {
+export const addComment = async (body: string, slug: string, id?: number) => {
   if (!body) {
     throw new HttpException(422, { errors: { body: ["can't be blank"] } });
   }
@@ -524,7 +524,7 @@ export const addComment = async (body: string, slug: string, id: number) => {
   };
 };
 
-export const deleteComment = async (id: number, userId: number) => {
+export const deleteComment = async (id?: number, userId?: number) => {
   const comment = await prisma.comment.findFirst({
     where: {
       id,
@@ -559,7 +559,7 @@ export const deleteComment = async (id: number, userId: number) => {
   });
 };
 
-export const favoriteArticle = async (slugPayload: string, id: number) => {
+export const favoriteArticle = async (slugPayload: string, id?: number) => {
   const { _count, ...article } = await prisma.article.update({
     where: {
       slug: slugPayload,
@@ -605,7 +605,7 @@ export const favoriteArticle = async (slugPayload: string, id: number) => {
   return result;
 };
 
-export const unfavoriteArticle = async (slugPayload: string, id: number) => {
+export const unfavoriteArticle = async (slugPayload: string, id?: number) => {
   const { _count, ...article } = await prisma.article.update({
     where: {
       slug: slugPayload,
