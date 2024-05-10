@@ -72,3 +72,13 @@ Run the following command to:
 ```shell
 npm ci && npx prisma migrate deploy && node dist/api/main.js
 ```
+
+# Howie's Instructions
+
+These are just loose notes, so be warned.
+- Follow Detail install instructions
+- Ran a pg container with `docker run --rm --name conduit-db -e POSTGRES_PASSWORD=pass -p 54322:5432 -d  postgres`
+- `npm run db:init` (on my branch)
+- accessible at `localhost:3000/api/articles`
+- It works!
+- You have to do `const prisma = global.prisma || new PrismaClient().$extends(prismaExtension) as PrismaClient;`
