@@ -1,5 +1,8 @@
+
+const { trace }  = require("@opentelemetry/api");
 import { setup } from "@detail-dev/trace";
 setup({localDevMode: true});
+import './dd-tracer';
 import express from 'express';
 import cors from 'cors';
 import * as bodyParser from 'body-parser';
@@ -7,6 +10,7 @@ import routes from './app/routes/routes';
 import HttpException from './app/models/http-exception.model';
 
 export const app = express();
+trace.getTracer('bob');
 
 /**
  * App Configuration
