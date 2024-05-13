@@ -30,11 +30,21 @@ const router = Router();
 router.get('/articles', auth.optional, async (req: Request, res: Response, next: NextFunction) => {
   try {
     const result = await getArticles(req.query, req.auth?.user?.id);
-    res.json(result);
+    const safeArticles = result.articles.map(ensureArticlesAreSFW)
+    res.json({articles: safeArticles, articleCount: safeArticles.length});
   } catch (error) {
     next(error);
   }
 });
+
+export const ensureArticlesAreSFW = ({body, author}: {body: string, author: {username}}): boolean => {
+  if (author.username === 'guest') {
+    const badWords = ['bad', 'words'];
+    return badWords.some((word) => !body.includes(word));
+  } else {
+    return true
+  }
+}
 
 /**
  * Get paginated feed articles
