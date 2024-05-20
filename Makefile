@@ -14,6 +14,7 @@ clean:
 	rm -f ./spans.jsonl
 	rm -rf generated
 	rm -rf ${DETAIL_FOLDER}/generated
+	rm -rf ${DETAIL_FOLDER}/coverage
 
 .PHONY: generate
 generate:

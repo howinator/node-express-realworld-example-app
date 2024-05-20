@@ -38,10 +38,13 @@ router.get('/articles', auth.optional, async (req: Request, res: Response, next:
 });
 
 export const ensureArticlesAreSFW = ({body, author}: {body: string, author: {username}}): boolean => {
+  const badWords = ['bad', 'words'];
+  
   if (author.username === 'guest') {
-    const badWords = ['bad', 'words'];
+    console.log('is guest');
     return badWords.some((word) => !body.includes(word));
   } else {
+    console.log('SFW!');
     return true
   }
 }

@@ -1,5 +1,4 @@
 import {ensureArticlesAreSFW } from '../../app/routes/article/article.controller';
-
 describe('article service', () => {
   describe('ensureArticlesAreSFW', () => {
     it('should return true for non-guest', () => {
